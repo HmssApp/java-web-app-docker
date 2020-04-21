@@ -3,17 +3,17 @@ apiVersion: v1
 kind: ReplicationController
 metadata:
   labels:
-    name: javawebapp
-  name: java-controller
+    app: javawebappjacocoworld
+  namespace: jacocoworld
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        name: javawebapp
+         app: javawebappjacocoworld
     spec:
       containers:
-      - image: dockerhandson/java-web-app
+      - image: agunuworld/java-web-app
         name: javawebapp
         ports:
         - name: javawebapp
@@ -25,11 +25,12 @@ kind: Service
 metadata:
   labels:
     name: javawebapp
-  name: javawebapp
+  namespace: jacocworld
 spec:
   type: NodePort
   ports:
     - port: 8080
       targetPort: 8080
+      NodePort: 33332
   selector:
-    name: javawebapp
+     app: javawebappjacocoworld

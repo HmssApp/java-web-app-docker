@@ -5,7 +5,7 @@ metadata:
   name:  javawebapppod        #Name is difinite
   labels:
     app:  javawebapp                    #key abc app and name not difinite
-  namespace:  jacocoworld
+  namespace:  javawebapp
 spec:
   containers:
   - name:  javawebappcontainer         #name of a container
@@ -19,7 +19,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: jacocoworldservice                             #service name varies it can be any name
-  namespace: jacocoworld
+  namespace: javawebapp
 spec:
   type: NodePort                                             #type of service and we have two types of services NodePortip and Notepod
   selector:

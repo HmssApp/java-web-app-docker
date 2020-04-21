@@ -1,36 +1,31 @@
 ---
-apiVersion: v1
-kind: ReplicationController
+apiVersion:  v1
+kind: Pod
 metadata:
+  name:  javawebapppod        #Name is difinite
   labels:
-    app: javawebappjacocoworld
-  namespace: jacocoworld
+    app:  javawebapp                    #key abc app and name not difinite
+  namespace:  jacocoworld
 spec:
-  replicas: 1
-  template:
-    metadata:
-      labels:
-         app: javawebappjacocoworld
-    spec:
-      containers:
-      - image: agunuworld/java-web-app
-        name: javawebapp
-        ports:
-        - name: javawebapp
-          containerPort: 8080  
+  containers:
+  - name:  javawebappcontainer         #name of a container
+    image:  agunuworld/java-web-app:7             #which images u want to create a container
+    ports:
+    - containerPort: 8080
+    
 ---
 # Node Port Service
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    name: javawebapp
-  namespace: jacocworld
+  name: jacocoworldservice                             #service name varies it can be any name
+  namespace: jacocoworld
 spec:
-  type: NodePort
-  ports:
-    - port: 8080
-      targetPort: 8080
-      NodePort: 33332
+  type: NodePort                                             #type of service and we have two types of services NodePortip and Notepod
   selector:
-     app: javawebappjacocoworld
+     app: javawebapp                                     #this selector helps to identify the label created in the pod
+  ports:
+  - port: 80                                                  #default
+    targetPort: 8080    #target application of the pod app
+    nodePort: 30037
+

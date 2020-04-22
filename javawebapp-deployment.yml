@@ -9,7 +9,7 @@ metadata:
 spec:
   containers:
   - name:  javawebappcontainer         #name of a container
-    image:  agunuworld/java-web-app:5             #which images u want to create a container
+    image:  agunuworld/java-web-app:8             #which images u want to create a container
     ports:
     - containerPort: 8080
     

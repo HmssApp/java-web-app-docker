@@ -1,32 +1,37 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  labels:
-     app: javawebapp
+  name: javawebapprc
+  namespace: javawebappspace
 spec:
-  replicas: 2
+  replicas: 4
+  selector:
+     app: javawebapp
+     namespace: javawebappspace
   template:
     metadata:
-      labels:
-        app: javawebapp
+        name: javawebapppod
+        labels:
+          app: javawebapp
+          namespace: javawebappspace
     spec:
      containers:
-      - image: agunuworld/java-web-app:8
-        name: javawebappcontainer
-        ports:
-        - name: javawebappcontainer
-          containerPort: 8080
-        
+     - name:  javawebappcontainer         #name of a container
+       image:  agunuworld/java-web-app:8             #which images u want to create a container
+       ports:
+       - containerPort: 8080
+
 ---
 # Node Port Service
 apiVersion: v1
 kind: Service
 metadata:
   name: javawebappservice                             #service name varies it can be any name
+  namespace: javawebappspace
 spec:
   type: NodePort                                             #type of service and we have two types of services NodePortip and Notepod
   selector:
-     app: javawebapp                                     #this selector helps to identify the label created in the pod
+     app: javawebapp                     #this selector helps to identify the label created in the pod
   ports:
   - port: 80                                                  #default
     targetPort: 8080    #target application of the pod app

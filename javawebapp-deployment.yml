@@ -15,7 +15,7 @@ spec:
        - name: javawebappcontainer
         image: agunuworld/java-web-app:8
         ports:
-        - containerPort: 8080
+        containerPort: 8080
         
 ---
 # Node Port Service

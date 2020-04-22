@@ -9,7 +9,7 @@ metadata:
 spec:
   containers:
   - name:  javawebappcontainer         #name of a container
-    image:  agunuworld/java-web-app:7             #which images u want to create a container
+    image:  agunuworld/java-web-app             #which images u want to create a container
     ports:
     - containerPort: 8080
     
@@ -18,7 +18,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: jacocoworldservice                             #service name varies it can be any name
+  name: javawebappservice                             #service name varies it can be any name
   namespace: javawebapp
 spec:
   type: NodePort                                             #type of service and we have two types of services NodePortip and Notepod
@@ -27,5 +27,5 @@ spec:
   ports:
   - port: 80                                                  #default
     targetPort: 8080    #target application of the pod app
-    nodePort: 30037
+    nodePort: 30000
 

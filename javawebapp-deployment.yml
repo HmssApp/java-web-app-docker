@@ -3,7 +3,6 @@ kind: ReplicationController
 metadata:
   labels:
      app: javawebapp
-  namespace: javawebappspace
 spec:
   replicas: 2
   template:
@@ -28,7 +27,6 @@ spec:
   type: NodePort                                             #type of service and we have two types of services NodePortip and Notepod
   selector:
      app: javawebapp                                     #this selector helps to identify the label created in the pod
-     namespace: javawebappspace
   ports:
   - port: 80                                                  #default
     targetPort: 8080    #target application of the pod app

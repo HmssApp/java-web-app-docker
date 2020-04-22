@@ -11,11 +11,12 @@ spec:
       labels:
         app: javawebapp
     spec:
-       containers:
-       - name: javawebappcontainer
-        image: agunuworld/java-web-app:8
+     containers:
+      - image: agunuworld/java-web-app:8
+        name: javawebappcontainer
         ports:
-        containerPort: 8080
+        - name: javawebappcontainer
+          containerPort: 8080
         
 ---
 # Node Port Service
